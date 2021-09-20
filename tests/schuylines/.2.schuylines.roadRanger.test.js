@@ -9,7 +9,7 @@ let page
 
 before(async function() {
     browser = await puppeteer.launch({
-        headless: false,
+        headless: true,
         slowMo: 25,
         devtools: false,
     })

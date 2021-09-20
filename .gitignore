@@ -1,3 +1,6 @@
 **/*.png
+**/automations/.1.eagle.js
+**/automations/.2.siSystems.js
 node_modules
 .DS_Store
+.env

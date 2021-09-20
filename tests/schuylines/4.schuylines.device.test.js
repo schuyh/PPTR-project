@@ -14,7 +14,11 @@ describe('Device Emulation', () => {
             slowMo: 0,
             devtools: false
         })
-        page = await browser.newPage()
+        const context = await browser.createIncognitoBrowserContext()
+        page = await context.newPage()
+        await page.setDefaultTimeout(30000)
+        await page.setDefaultNavigationTimeout(60000)
+        await page.goto(baseURL)
         await page.setDefaultTimeout(10000)
         await page.setDefaultNavigationTimeout(20000)
     })
@@ -28,7 +32,7 @@ describe('Device Emulation', () => {
         await page.emulate(mobile)
         await page.goto(baseURL)
         await page.waitForSelector(toggle)
-        await page.waitForTimeout(2500)
+        await page.waitForTimeout(1000)
         try {
             await page.screenshot({
                 path: screenshotPath + 'iPhoneSE-pt-dm.png',
@@ -38,7 +42,7 @@ describe('Device Emulation', () => {
             throw new Error('Could not capture dm screenshot')
         }
         await click(page, toggle)
-        await page.waitForTimeout(2500)
+        await page.waitForTimeout(1000)
         try {
             await page.screenshot({
                 path: screenshotPath + 'iPhoneSE-pt-lm.png',
@@ -54,7 +58,7 @@ describe('Device Emulation', () => {
         await page.emulate(mobile)
         await page.goto(baseURL)
         await page.waitForSelector(toggle)
-        await page.waitForTimeout(2500)
+        await page.waitForTimeout(1000)
         try {
             await page.screenshot({
                 path: screenshotPath + 'iPhoneSE-ls-dm.png',
@@ -64,7 +68,7 @@ describe('Device Emulation', () => {
             throw new Error('Could not capture dm screenshot')
         }
         await click(page, toggle)
-        await page.waitForTimeout(2500)
+        await page.waitForTimeout(1000)
         try {
             await page.screenshot({
                 path: screenshotPath + 'iPhoneSE-ls-lm.png',
@@ -80,7 +84,7 @@ describe('Device Emulation', () => {
         await page.emulate(mobile)
         await page.goto(baseURL)
         await page.waitForSelector(toggle)
-        await page.waitForTimeout(2500)
+        await page.waitForTimeout(1000)
         try {
             await page.screenshot({
                 path: screenshotPath + 'iPhoneXR-pt-dm.png',
@@ -90,7 +94,7 @@ describe('Device Emulation', () => {
             throw new Error('Could not capture dm screenshot')
         }
         await click(page, toggle)
-        await page.waitForTimeout(2500)
+        await page.waitForTimeout(1000)
         try {
             await page.screenshot({
                 path: screenshotPath + 'iPhoneXR-pt-lm.png',
@@ -106,7 +110,7 @@ describe('Device Emulation', () => {
         await page.emulate(mobile)
         await page.goto(baseURL)
         await page.waitForSelector(toggle)
-        await page.waitForTimeout(2500)
+        await page.waitForTimeout(1000)
         try {
             await page.screenshot({
                 path: screenshotPath + 'iPhoneXR-ls-dm.png',
@@ -116,7 +120,7 @@ describe('Device Emulation', () => {
             throw new Error('Could not capture dm screenshot')
         }
         await click(page, toggle)
-        await page.waitForTimeout(2500)
+        await page.waitForTimeout(1000)
         try {
             await page.screenshot({
                 path: screenshotPath + 'iPhoneXR-ls-lm.png',
@@ -132,7 +136,7 @@ describe('Device Emulation', () => {
         await page.emulate(tablet)
         await page.goto(baseURL)
         await page.waitForSelector(toggle)
-        await page.waitForTimeout(2500)
+        await page.waitForTimeout(1000)
         try {
             await page.screenshot({
                 path: screenshotPath + 'iPadMini-pt-dm.png',
@@ -142,7 +146,7 @@ describe('Device Emulation', () => {
             throw new Error('Could not capture dm screenshot')
         }
         await click(page, toggle)
-        await page.waitForTimeout(2500)
+        await page.waitForTimeout(1000)
         try {
             await page.screenshot({
                 path: screenshotPath + 'iPadMini-pt-lm.png',
@@ -158,7 +162,7 @@ describe('Device Emulation', () => {
         await page.emulate(tablet)
         await page.goto(baseURL)
         await page.waitForSelector(toggle)
-        await page.waitForTimeout(2500)
+        await page.waitForTimeout(1000)
         try {
             await page.screenshot({
                 path: screenshotPath + 'iPadMini-ls-dm.png',
@@ -168,7 +172,7 @@ describe('Device Emulation', () => {
             throw new Error('Could not capture dm screenshot')
         }
         await click(page, toggle)
-        await page.waitForTimeout(2500)
+        await page.waitForTimeout(1000)
         try {
             await page.screenshot({
                 path: screenshotPath + 'iPadMini-ls-lm.png',
@@ -184,7 +188,7 @@ describe('Device Emulation', () => {
         await page.goto(baseURL)
         await page.waitForSelector(toggle)
         try {
-            await page.waitForTimeout(2500)
+            await page.waitForTimeout(1000)
             await page.screenshot({
                 path: screenshotPath + 'desktop-dm.png',
                 fullPage: true,
@@ -193,7 +197,7 @@ describe('Device Emulation', () => {
             throw new Error('Could not capture dm screenshot')
         }
         await click(page, toggle)
-        await page.waitForTimeout(2500)
+        await page.waitForTimeout(1000)
         try {
             await page.screenshot({
                 path: screenshotPath + 'desktop-lm.png',
@@ -203,4 +207,4 @@ describe('Device Emulation', () => {
             throw new Error('Could not capture lm screenshot')
         }
     })
-})
+}) 
